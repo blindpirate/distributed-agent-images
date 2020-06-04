@@ -27,7 +27,7 @@ RUN set -eux; \
     tar -xf /tmp/openjdk-14.tar.gz --strip-components=1; \
     rm -rf /tmp/openjdk-14.tar.gz;
 
-ENV JDK8=/opt/jdk/openjdk-8
+ENV JDK14=/opt/jdk/openjdk-14
 
 # Install additional packages
 ENV DEBIAN_FRONTEND noninteractive
