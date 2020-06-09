@@ -38,6 +38,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends git zip \
     gcc-multilib \
     gobjc-multilib \
     gobjc++-multilib \
+    clang \
     clang-3.6 \
     gnustep-devel \
     make \
