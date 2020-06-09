@@ -31,7 +31,27 @@ ENV JDK14=/opt/jdk/openjdk-14
 
 # Install additional packages
 ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get update && apt-get install -y --no-install-recommends zip unzip g++
+RUN apt-get update && apt-get install -y --no-install-recommends zip \
+    unzip \
+    g++ \
+    g++-multilib \
+    gcc-multilib \
+    gobjc-multilib \
+    gobjc++-multilib \
+    clang-3.6 \
+    gnustep-devel \
+    make \
+    cmake \
+    libcurl4-openssl-dev \
+    libncurses5-dev \
+    lib32ncurses5-dev \
+    
+RUN mkdir -p /tmp/install-gnustep-libojbc2/
+COPY libobjc2-1.6.1.tar.bz2 /tmp/install-gnustep-libojbc2/
+COPY install-gnustep-libojbc2.sh /tmp/install-gnustep-libojbc2/
+
+WORKDIR /tmp/install-gnustep-libojbc2/
+RUN /tmp/install-gnustep-libojbc2/install-gnustep-libojbc2.sh
 
 # Switch back to application user
 USER gradle
