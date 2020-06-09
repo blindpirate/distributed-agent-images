@@ -44,7 +44,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends zip \
     cmake \
     libcurl4-openssl-dev \
     libncurses5-dev \
-    lib32ncurses5-dev \
+    lib32ncurses5-dev 
     
 RUN mkdir -p /tmp/install-gnustep-libojbc2/
 COPY libobjc2-1.6.1.tar.bz2 /tmp/install-gnustep-libojbc2/
