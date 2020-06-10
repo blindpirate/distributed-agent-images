@@ -3,6 +3,8 @@ FROM gradle/gradle-enterprise-test-distribution-agent:1.0
 # Switch to root user for installing packages
 USER root
 
+RUN ln -s /opt/java/openjdk/bin/java /usr/bin/java
+
 # Install JDK8
 RUN set -eux; \
     ESUM='f39b523c724d0e0047d238eb2bb17a9565a60574cf651206c867ee5fc000ab43'; \
@@ -31,7 +33,8 @@ ENV JDK14=/opt/jdk/openjdk-14
 
 # Install additional packages
 ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get update && apt-get install -y --no-install-recommends git zip \
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    file git zip \
     unzip \
     g++ \
     g++-multilib \
