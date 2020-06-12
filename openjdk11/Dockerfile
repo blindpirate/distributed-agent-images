@@ -51,9 +51,12 @@ RUN echo "deb http://security.ubuntu.com/ubuntu xenial-security main" | tee --ap
     gnustep-devel \
     make \
     cmake \
-    libcurl3 libcurl4 libcurl4-openssl-dev \
+    libcurl4-openssl-dev \
     libncurses5-dev \
     lib32ncurses5-dev 
+
+COPY libcurl.so.4.4.0 /usr/lib/x86_64-linux-gnu/libcurl.so.4.4.0
+RUN ln -s /usr/lib/x86_64-linux-gnu/libcurl.so.4.4.0 /usr/lib/x86_64-linux-gnu/libcurl.so.4
     
 RUN mkdir -p /tmp/install-gnustep-libojbc2/
 COPY libobjc2-1.6.1.tar.bz2 /tmp/install-gnustep-libojbc2/
