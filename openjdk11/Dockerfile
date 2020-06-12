@@ -36,7 +36,8 @@ ENV JDK14=/opt/jdk/openjdk-14
 
 # Install additional packages
 ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN echo "deb http://security.ubuntu.com/ubuntu xenial-security main" | sudo tee --append /etc/apt/sources.list && \
+    apt-get update && apt-get install -y --no-install-recommends \
     wget file git zip \
     unzip \
     g++ \
@@ -46,6 +47,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     gobjc++-multilib \
     clang-3.6 \
     libicu-dev \
+    libicu55 \
     gnustep-devel \
     make \
     cmake \
