@@ -45,7 +45,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     gcc-multilib \
     gobjc-multilib \
     gobjc++-multilib \
-    clang \
+    clang-3.6 \
+    libicu-dev \
     gnustep-devel \
     make \
     cmake \
@@ -59,6 +60,15 @@ COPY install-gnustep-libojbc2.sh /tmp/install-gnustep-libojbc2/
 
 WORKDIR /tmp/install-gnustep-libojbc2/
 RUN /tmp/install-gnustep-libojbc2/install-gnustep-libojbc2.sh
+
+RUN mkdir -p /tmp/swift/ && \
+    wget https://swift.org/builds/swift-3.1.1-release/ubuntu1604/swift-3.1.1-RELEASE/swift-3.1.1-RELEASE-ubuntu16.04.tar.gz -O /tmp/swift/swift-3.1.1-RELEASE-ubuntu16.04.tar.gz && \
+    tar xf /tmp/swift/swift-3.1.1-RELEASE-ubuntu16.04.tar.gz -C /opt/swift/3.1.1 && \
+    wget https://swift.org/builds/swift-4.2.3-release/ubuntu1604/swift-4.2.3-RELEASE/swift-4.2.3-RELEASE-ubuntu16.04.tar.gz -O /tmp/swift/swift-4.2.3-RELEASE-ubuntu16.04.tar.gz && \
+    tar xf /tmp/swift/swift-4.2.3-RELEASE-ubuntu16.04.tar.gz -C /opt/swift/4.2.3 && \
+    wget https://swift.org/builds/swift-5.0-release/ubuntu1604/swift-5.0-RELEASE/swift-5.0-RELEASE-ubuntu16.04.tar.gz -O /tmp/swift/swift-5.0-RELEASE-ubuntu16.04.tar.gz && \
+    tar xf /tmp/swift/swift-5.0-RELEASE-ubuntu16.04.tar.gz -C /opt/swift/5.0 && \
+    chmod o+r -R /opt/swift 
 
 # Switch back to application user
 USER gradle
