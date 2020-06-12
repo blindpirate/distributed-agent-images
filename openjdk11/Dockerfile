@@ -3,6 +3,10 @@ FROM gradle/gradle-enterprise-test-distribution-agent:1.0
 # Switch to root user for installing packages
 USER root
 
+RUN mkdir -p /opt/android/sdk/licenses
+COPY android-sdk-license /opt/android/sdk/licenses
+ENV ANDROID_HOME=/opt/android
+
 RUN ln -s /opt/java/openjdk/bin/java /usr/bin/java
 
 # Install JDK8
