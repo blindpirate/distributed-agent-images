@@ -11,16 +11,14 @@ RUN ln -s /opt/java/openjdk/bin/java /usr/bin/java
 
 # Install JDK8
 RUN set -eux; \
-    ESUM='f39b523c724d0e0047d238eb2bb17a9565a60574cf651206c867ee5fc000ab43'; \
-    BINARY_URL='https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u242-b08/OpenJDK8U-jdk_x64_linux_hotspot_8u242b08.tar.gz'; \
-    curl -LfsSo /tmp/openjdk-8.tar.gz ${BINARY_URL}; \
-    echo "${ESUM} */tmp/openjdk-8.tar.gz" | sha256sum -c -; \
-    mkdir -p /opt/jdk/openjdk-8; \
-    cd /opt/jdk/openjdk-8; \
-    tar -xf /tmp/openjdk-8.tar.gz --strip-components=1; \
-    rm -rf /tmp/openjdk-8.tar.gz;
+    BINARY_URL='https://d2.injdk.cn/oracle/8/jdk-8u251-linux-x64.tar.gz'; \
+    curl -LfsSo /tmp/oraclejdk-8.tar.gz ${BINARY_URL}; \
+    mkdir -p /opt/jdk/oraclejdk-8; \
+    cd /opt/jdk/oraclejdk-8; \
+    tar -xf /tmp/oraclejdk-8.tar.gz --strip-components=1; \
+    rm -rf /tmp/oraclejdk-8.tar.gz;
 
-ENV JDK8=/opt/jdk/openjdk-8
+ENV JDK8=/opt/jdk/oraclejdk-8
 
 # Install JDK14
 RUN set -eux; \
@@ -59,7 +57,7 @@ COPY libobjc2-1.6.1.tar.bz2 /tmp/install-gnustep-libojbc2/
 COPY install-gnustep-libojbc2.sh /tmp/install-gnustep-libojbc2/
 
 WORKDIR /tmp/install-gnustep-libojbc2/
-RUN /tmp/install-gnustep-libojbc2/install-gnustep-libojbc2.sh
+RUN /tmp/install-gnustep-libojbc2/install-gnustep-libojbc2.sh && rm -rf /tmp/install-gnustep-libojbc2/
 
 RUN mkdir -p /tmp/swift/ && mkdir -p /opt/swift/ && \
     wget https://swift.org/builds/swift-3.1.1-release/ubuntu1604/swift-3.1.1-RELEASE/swift-3.1.1-RELEASE-ubuntu16.04.tar.gz -O /tmp/swift/swift-3.1.1-RELEASE-ubuntu16.04.tar.gz && \
@@ -68,7 +66,8 @@ RUN mkdir -p /tmp/swift/ && mkdir -p /opt/swift/ && \
     tar xf /tmp/swift/swift-4.2.3-RELEASE-ubuntu16.04.tar.gz -C /opt/swift/ && mv /opt/swift/swift-4.2.3-RELEASE-ubuntu16.04 /opt/swift/swift-4.2.3 && \
     wget https://swift.org/builds/swift-5.0-release/ubuntu1604/swift-5.0-RELEASE/swift-5.0-RELEASE-ubuntu16.04.tar.gz -O /tmp/swift/swift-5.0-RELEASE-ubuntu16.04.tar.gz && \
     tar xf /tmp/swift/swift-5.0-RELEASE-ubuntu16.04.tar.gz -C /opt/swift/ && mv /opt/swift/swift-5.0-RELEASE-ubuntu16.04 /opt/swift/swift-5.0 &&\
-    chmod o+r -R /opt/swift 
+    chmod o+r -R /opt/swift && \
+    rm -rf /tmp/swift/
 
 # Switch back to application user
 USER gradle
