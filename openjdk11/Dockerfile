@@ -6,6 +6,7 @@ USER root
 RUN mkdir -p /opt/android/sdk/licenses
 COPY android-sdk-license /opt/android/sdk/licenses
 ENV ANDROID_HOME=/opt/android
+RUN chmod 777 -R /opt/android
 
 RUN ln -s /opt/java/openjdk/bin/java /usr/bin/java
 
@@ -61,11 +62,12 @@ RUN /tmp/install-gnustep-libojbc2/install-gnustep-libojbc2.sh && rm -rf /tmp/ins
 
 RUN mkdir -p /tmp/swift/ && mkdir -p /opt/swift/ && \
     wget https://swift.org/builds/swift-3.1.1-release/ubuntu1604/swift-3.1.1-RELEASE/swift-3.1.1-RELEASE-ubuntu16.04.tar.gz -O /tmp/swift/swift-3.1.1-RELEASE-ubuntu16.04.tar.gz && \
-    tar xf /tmp/swift/swift-3.1.1-RELEASE-ubuntu16.04.tar.gz -C /opt/swift/ && mv /opt/swift/swift-3.1.1-RELEASE-ubuntu16.04 /opt/swift/swift-3.1.1 &&\
+    tar xf /tmp/swift/swift-3.1.1-RELEASE-ubuntu16.04.tar.gz -C /opt/swift/ && mv /opt/swift/swift-3.1.1-RELEASE-ubuntu16.04 /opt/swift/3.1.1 &&\
     wget https://swift.org/builds/swift-4.2.3-release/ubuntu1604/swift-4.2.3-RELEASE/swift-4.2.3-RELEASE-ubuntu16.04.tar.gz -O /tmp/swift/swift-4.2.3-RELEASE-ubuntu16.04.tar.gz && \
-    tar xf /tmp/swift/swift-4.2.3-RELEASE-ubuntu16.04.tar.gz -C /opt/swift/ && mv /opt/swift/swift-4.2.3-RELEASE-ubuntu16.04 /opt/swift/swift-4.2.3 && \
+    tar xf /tmp/swift/swift-4.2.3-RELEASE-ubuntu16.04.tar.gz -C /opt/swift/ && mv /opt/swift/swift-4.2.3-RELEASE-ubuntu16.04 /opt/swift/4.2.3 && \
     wget https://swift.org/builds/swift-5.0-release/ubuntu1604/swift-5.0-RELEASE/swift-5.0-RELEASE-ubuntu16.04.tar.gz -O /tmp/swift/swift-5.0-RELEASE-ubuntu16.04.tar.gz && \
-    tar xf /tmp/swift/swift-5.0-RELEASE-ubuntu16.04.tar.gz -C /opt/swift/ && mv /opt/swift/swift-5.0-RELEASE-ubuntu16.04 /opt/swift/swift-5.0 &&\
+    tar xf /tmp/swift/swift-5.0-RELEASE-ubuntu16.04.tar.gz -C /opt/swift/ && mv /opt/swift/swift-5.0-RELEASE-ubuntu16.04 /opt/swift/5.0 &&\
+    ln -s /opt/swift/5.0 /opt/swift/latest
     chmod o+r -R /opt/swift && \
     rm -rf /tmp/swift/
 
