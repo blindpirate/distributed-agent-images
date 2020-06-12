@@ -51,7 +51,7 @@ RUN echo "deb http://security.ubuntu.com/ubuntu xenial-security main" | tee --ap
     gnustep-devel \
     make \
     cmake \
-    libcurl4-openssl-dev \
+    libcurl3 libcurl-openssl1.0-dev \
     libncurses5-dev \
     lib32ncurses5-dev 
     
