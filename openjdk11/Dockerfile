@@ -67,7 +67,7 @@ RUN mkdir -p /tmp/swift/ && mkdir -p /opt/swift/ && \
     tar xf /tmp/swift/swift-4.2.3-RELEASE-ubuntu16.04.tar.gz -C /opt/swift/ && mv /opt/swift/swift-4.2.3-RELEASE-ubuntu16.04 /opt/swift/4.2.3 && \
     wget https://swift.org/builds/swift-5.0-release/ubuntu1604/swift-5.0-RELEASE/swift-5.0-RELEASE-ubuntu16.04.tar.gz -O /tmp/swift/swift-5.0-RELEASE-ubuntu16.04.tar.gz && \
     tar xf /tmp/swift/swift-5.0-RELEASE-ubuntu16.04.tar.gz -C /opt/swift/ && mv /opt/swift/swift-5.0-RELEASE-ubuntu16.04 /opt/swift/5.0 &&\
-    ln -s /opt/swift/5.0 /opt/swift/latest
+    ln -s /opt/swift/5.0 /opt/swift/latest && \
     chmod o+r -R /opt/swift && \
     rm -rf /tmp/swift/
 
