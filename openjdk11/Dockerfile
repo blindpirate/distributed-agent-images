@@ -4,7 +4,7 @@ FROM gradle/gradle-enterprise-test-distribution-agent:1.0
 USER root
 
 RUN mkdir -p /opt/android/sdk/licenses
-COPY android-sdk-license /opt/android/sdk/licenses
+COPY android-sdk-license /opt/android/licenses
 ENV ANDROID_HOME=/opt/android
 RUN chmod 777 -R /opt/android
 
