@@ -36,7 +36,7 @@ ENV JDK14=/opt/jdk/openjdk-14
 
 # Install additional packages
 ENV DEBIAN_FRONTEND noninteractive
-RUN echo "deb http://security.ubuntu.com/ubuntu xenial-security main" | sudo tee --append /etc/apt/sources.list && \
+RUN echo "deb http://security.ubuntu.com/ubuntu xenial-security main" | tee --append /etc/apt/sources.list && \
     apt-get update && apt-get install -y --no-install-recommends \
     wget file git zip \
     unzip \
