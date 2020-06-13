@@ -53,6 +53,7 @@ RUN echo "deb http://security.ubuntu.com/ubuntu xenial-security main" | tee --ap
     cmake \
     libcurl4-openssl-dev \
     libncurses5-dev \
+    libidn11:i386 \
     lib32ncurses5-dev 
 
 COPY libcurl.so.4.4.0 /usr/lib/x86_64-linux-gnu/libcurl.so.4.4.0
