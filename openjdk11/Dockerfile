@@ -81,5 +81,7 @@ RUN mkdir -p /tmp/swift/ && mkdir -p /opt/swift/ && \
     chmod o+r -R /opt/swift && \
     rm -rf /tmp/swift/
 
+ENV TMPDIR=/tmp
+
 # Switch back to application user
 USER gradle
