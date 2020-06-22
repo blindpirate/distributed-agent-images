@@ -45,6 +45,7 @@ RUN echo "deb http://security.ubuntu.com/ubuntu xenial-security main" | tee --ap
     gcc-multilib \
     gobjc-multilib \
     gobjc++-multilib \
+    clang \
     clang-3.6 \
     libicu-dev \
     libicu55 \
@@ -52,12 +53,15 @@ RUN echo "deb http://security.ubuntu.com/ubuntu xenial-security main" | tee --ap
     make \
     cmake \
     libcurl4-openssl-dev \
+    libssl1.0.0 libssl-dev \
     libncurses5-dev \
-    libidn11:i386 \
     lib32ncurses5-dev 
 
 COPY libcurl.so.4.4.0 /usr/lib/x86_64-linux-gnu/libcurl.so.4.4.0
 RUN ln -sf /usr/lib/x86_64-linux-gnu/libcurl.so.4.4.0 /usr/lib/x86_64-linux-gnu/libcurl.so.4
+
+COPY libidn.so.11.6.15 /usr/lib/x86_64-linux-gnu/libidn.so.11.6.15
+RUN ln -sf /usr/lib/x86_64-linux-gnu/libidn.so.11.6.15 /usr/lib/x86_64-linux-gnu/libidn.so.11
     
 RUN mkdir -p /tmp/install-gnustep-libojbc2/
 COPY libobjc2-1.6.1.tar.bz2 /tmp/install-gnustep-libojbc2/
