@@ -12,7 +12,7 @@ RUN ln -s /opt/java/openjdk/bin/java /usr/bin/java
 
 # Install JDK8
 RUN set -eux; \
-    BINARY_URL='https://d2.injdk.cn/oracle/8/jdk-8u251-linux-x64.tar.gz'; \
+    BINARY_URL='https://wtff.oss-cn-shanghai.aliyuncs.com/jdk/jdk-8u251-linux-x64.tar.gz'; \
     curl -LfsSo /tmp/oraclejdk-8.tar.gz ${BINARY_URL}; \
     mkdir -p /opt/jdk/oraclejdk-8; \
     cd /opt/jdk/oraclejdk-8; \
