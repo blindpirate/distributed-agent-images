@@ -83,7 +83,7 @@ RUN mkdir -p /tmp/swift/ && mkdir -p /opt/swift/ && \
 
 ENV TMPDIR=/tmp
 
-COPY gradle-enterprise-test-distribution-agent-1.0.1-36458866.jar /opt/test-distribution-agent/lib/test-distribution-agent-all.jar
+COPY gradle-enterprise-test-distribution-agent-1.1-rc-1.jar /opt/test-distribution-agent/lib/test-distribution-agent-all.jar
 
 # Switch back to application user
 USER gradle
